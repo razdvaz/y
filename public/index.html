@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="  crossorigin="anonymous"></script>
+</head>
+<body>
+	<div id="phone">
+  		<p><b>номер телефона для входа в аккаунт:</b></p>
+  		<input type="text" id="phoneNumber" placeholder="+7123456789">
+  		<p><button id="sendPhoneNumber">получить СМС</button></p>
+  	</div>
+  	<div id="sms">
+		<p><b>Код из СМС:</b></p>
+  		<input type="text" id="smsCode" placeholder="1234">
+  		<p><button id="smsCode">выгрузить данные</button></p>  		
+  	</div>
+
+  	<script type="text/javascript">
+  		$(document).ready(()=>{
+  			$('#sendPhoneNumber').click(()=>{
+  				let phoneNumber = $('#phoneNumber').val()
+  				console.log(phoneNumber)
+  				$.post("http://localhost:3000/phone",{phoneNumber: phoneNumber},numberSuccess);
+				function numberSuccess(data){console.log(data)}
+  			})
+  		})
+  	</script>
+</body>
+</html>
